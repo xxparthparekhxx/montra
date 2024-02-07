@@ -9,7 +9,7 @@ class AuthDesider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FirebaseAuth.instance.currentUser == null
-        ? const Onbording()
+        ? Onbording()
         : const Home();
   }
 }
