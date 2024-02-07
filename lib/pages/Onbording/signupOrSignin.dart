@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:montra/pages/Onbording/Signup.dart';
+import 'package:montra/pages/Onbording/model/page.dart';
+import 'package:montra/pages/Onbording/widgets/page.dart';
 
 class Onbording extends StatefulWidget {
   Onbording({super.key});
@@ -12,7 +15,7 @@ class Onbording extends StatefulWidget {
 class _OnbordingState extends State<Onbording> {
   final pagecont = PageController(initialPage: 0, keepPage: true);
 
-  List<OnboardingPageData> pageData = [
+  final pageData = [
     OnboardingPageData(
         bt: "Gain total control of your money",
         st: "Become your own manager and make every cent count",
@@ -79,6 +82,11 @@ class _OnbordingState extends State<Onbording> {
           ],
         ),
         InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (c) {
+              return const Signup();
+            }));
+          },
           child: Container(
               margin: const EdgeInsets.all(10),
               padding: const EdgeInsets.all(10),
@@ -96,6 +104,7 @@ class _OnbordingState extends State<Onbording> {
               )),
         ),
         InkWell(
+          onTap: () {},
           child: Container(
               margin: const EdgeInsets.all(10).copyWith(bottom: 20),
               padding: const EdgeInsets.all(10),
@@ -114,44 +123,5 @@ class _OnbordingState extends State<Onbording> {
         )
       ],
     ));
-  }
-}
-
-class OnboardingPageData {
-  final String ipath;
-  final String bt;
-  final String st;
-  OnboardingPageData({required this.ipath, required this.bt, required this.st});
-}
-
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key, required this.data});
-  final OnboardingPageData data;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        children: [
-          Image.asset(data.ipath),
-          Text(
-            data.bt,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 35,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              data.st,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 20, color: Colors.blueGrey),
-            ),
-          )
-        ],
-      ),
-    );
   }
 }
