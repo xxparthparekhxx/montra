@@ -6,7 +6,7 @@ import 'package:montra/pages/Onbording/model/page.dart';
 import 'package:montra/pages/Onbording/widgets/page.dart';
 
 class Onbording extends StatefulWidget {
-  Onbording({super.key});
+  const Onbording({super.key});
 
   @override
   State<Onbording> createState() => _OnbordingState();

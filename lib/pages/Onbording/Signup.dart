@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:montra/services/assets.dart';
 
 class Signup extends StatefulWidget {
   const Signup({
@@ -13,23 +15,23 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign Up")),
+      appBar: AppBar(title: const Text("Sign Up")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), label: Text("Name"))),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), label: Text("Email"))),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: TextField(
                 decoration: InputDecoration(
@@ -43,9 +45,44 @@ class _SignupState extends State<Signup> {
               children: [
                 Checkbox(value: false, onChanged: (e) {}),
                 Expanded(
-                  child: Text(
-                      "by signing up you agree to the Terms of services and privacy policy"),
-                )
+                    child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'By signing up you agree to the ',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'Terms of Service',
+                        style: TextStyle(
+                          color: Colors.purple,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Handle Terms of Service click
+                            print('Terms of Service clicked');
+                          },
+                      ),
+                      TextSpan(
+                        text: ' and ',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: TextStyle(
+                          color: Colors.purple,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Handle Privacy Policy click
+                            print('Privacy Policy clicked');
+                          },
+                      ),
+                    ],
+                  ),
+                ))
               ],
             ),
           ),
@@ -71,6 +108,58 @@ class _SignupState extends State<Signup> {
                   ],
                 )),
           ),
+          Text("Or with"),
+          InkWell(
+            onTap: () {
+              // Navigator.push(context, MaterialPageRoute(builder: (c) {}));
+            },
+            child: Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        Assets.google_logo,
+                        width: 30,
+                      ),
+                    ),
+                    const Text(
+                      "Sign Up with Google",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                )),
+          ),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Already have an account? ',
+                  style: TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: 'Login',
+                  style: TextStyle(
+                    color: Colors.purple,
+                    decoration: TextDecoration.underline,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      // Handle login click
+                      print('Login clicked');
+                    },
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: !inited ? Splash() : AuthDesider(),
+      home: !inited ? const Splash() : const AuthDesider(),
     );
   }
 }
