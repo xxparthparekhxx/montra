@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:montra/pages/Onbording/Signin.dart';
 import 'package:montra/pages/Onbording/Signup.dart';
 import 'package:montra/pages/Onbording/model/page.dart';
 import 'package:montra/pages/Onbording/widgets/page.dart';
@@ -104,7 +105,11 @@ class _OnbordingState extends State<Onbording> {
               )),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (c) {
+              return const Signin();
+            }));
+          },
           child: Container(
               margin: const EdgeInsets.all(10).copyWith(bottom: 20),
               padding: const EdgeInsets.all(10),
