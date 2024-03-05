@@ -3,8 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:montra/pages/Onbording/signupOrSignin.dart';
 import 'package:montra/pages/home/home.dart';
 
-class AuthDesider extends StatelessWidget {
+class AuthDesider extends StatefulWidget {
   const AuthDesider({super.key});
+
+  @override
+  State<AuthDesider> createState() => _AuthDesiderState();
+}
+
+class _AuthDesiderState extends State<AuthDesider> {
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((event) {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

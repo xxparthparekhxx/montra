@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,38 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBw5AtVvCZz3ASyUhI8ey8DjHHg3HJDO0w',
-    appId: '1:1074307967856:web:a7dc3bdb886ca348557db5',
-    messagingSenderId: '1074307967856',
-    projectId: 'montra-445ac',
-    authDomain: 'montra-445ac.firebaseapp.com',
-    storageBucket: 'montra-445ac.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCJpLEPi551peotJsGPUooj7iqiQcaZwUA',
     appId: '1:1074307967856:android:30fdf7c72cf25438557db5',
     messagingSenderId: '1074307967856',
     projectId: 'montra-445ac',
     storageBucket: 'montra-445ac.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBwKXXkgoVE5UzKtDyHfYlVyWEIlTMdiiI',
-    appId: '1:1074307967856:ios:772e77cf37e5bb89557db5',
-    messagingSenderId: '1074307967856',
-    projectId: 'montra-445ac',
-    storageBucket: 'montra-445ac.appspot.com',
-    iosBundleId: 'com.example.montra',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBwKXXkgoVE5UzKtDyHfYlVyWEIlTMdiiI',
-    appId: '1:1074307967856:ios:20b0f3d381186d98557db5',
-    messagingSenderId: '1074307967856',
-    projectId: 'montra-445ac',
-    storageBucket: 'montra-445ac.appspot.com',
-    iosBundleId: 'com.example.montra.RunnerTests',
   );
 }
